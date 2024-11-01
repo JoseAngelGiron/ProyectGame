@@ -5,9 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour{
 
     [SerializeField] private float velocidad;
+    [SerializeField] private BoxCollider2D collSword;
 
     private Rigidbody2D rigid;
     private Animator animator;
+
+    private float posColX = 1;
+    private float posColY = 0;
 
     private SpriteRenderer spriteCharacter;
 
@@ -15,6 +19,14 @@ public class Player : MonoBehaviour{
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         spriteCharacter = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    private void Update(){
+
+        if(Input.GetMouseButtonDown(0)){
+            animator.SetTrigger("Attack");
+
+        }
     }
 
     private void FixedUpdate(){
@@ -31,10 +43,11 @@ public class Player : MonoBehaviour{
         animator.SetFloat("Walk", Mathf.Abs(rigid.velocity.magnitude));
 
         if(horizontal > 0){
+            collSword.offset = new Vector2(posColX, posColY);
             spriteCharacter.flipX = false;
 
         }else if(horizontal < 0){
-
+            collSword.offset = new Vector2(-posColX, posColY);
             spriteCharacter.flipX = true;
         }
     }
