@@ -15,9 +15,9 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
 
-        if(other.CompareTag("Orc")){
-            Destroy(other.gameObject);
-        }
+         //if(other.CompareTag("Orc")){
+           // Destroy(other.gameObject);
+        //}
 
     }
 
