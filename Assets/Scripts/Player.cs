@@ -18,6 +18,10 @@ public class Player : MonoBehaviour{
     private int vidaPersonaje = 3;
     private bool estoyHablando;
 
+    
+    private float velocidadExtra = 2f; 
+    private float tiempoAumento = 5f; 
+
     [SerializeField] UIManage uIManage;
 
     private void Awake(){
@@ -32,12 +36,12 @@ public class Player : MonoBehaviour{
             animator.SetTrigger("Attack");
 
         }
-        /*
+        
 
         if(Input.GetKeyDown(KeyCode.K)){
             CausarHerida();
         }
-        */
+        
     }
 
     private void FixedUpdate(){
@@ -48,6 +52,36 @@ public class Player : MonoBehaviour{
     public void ChequearSiHablo(bool hablando){
 
         estoyHablando = hablando;
+    }
+
+    public void SumaVida(){
+
+        if(vidaPersonaje < 3){
+            uIManage.SumaCorazones(vidaPersonaje);
+            vidaPersonaje++;
+        }
+    }
+
+    public void SumaVida2() {
+        if (vidaPersonaje < 3) {
+            uIManage.SumaCorazones(vidaPersonaje);
+            uIManage.SumaCorazones(vidaPersonaje+1);
+            vidaPersonaje += 2; 
+            if (vidaPersonaje > 3)
+             vidaPersonaje = 3; 
+             uIManage.SumaCorazones(vidaPersonaje);
+        }
+    }
+
+     
+    public void UsarPocionVelocidad() {
+        StartCoroutine(AumentarVelocidad());
+    }
+
+    private IEnumerator AumentarVelocidad() {
+        velocidad += velocidadExtra;
+        yield return new WaitForSeconds(tiempoAumento); 
+        velocidad -= velocidadExtra; 
     }
 
     private void Movement(){
@@ -72,7 +106,7 @@ public class Player : MonoBehaviour{
         }
     }
 
-    private void CausarHerida(){
+    public void CausarHerida(){
 
         if(vidaPersonaje>0){
             vidaPersonaje --;

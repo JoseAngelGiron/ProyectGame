@@ -7,13 +7,18 @@ using UnityEngine.UI;
 public class UIManage : MonoBehaviour
 {
     private int totalMonedas;
+    private int totalObjetos;
+    private int precioObjeto;
 
     [SerializeField] private TMP_Text textoMonedas;
     [SerializeField] private List<GameObject> listaCorazones;
     [SerializeField] private Sprite corazonDesactivado;
+    [SerializeField] private Sprite corazonActivado;
 
     [SerializeField] private GameObject cajaTexto;
     [SerializeField] private TMP_Text textoDialogo;
+
+    [SerializeField] private GameObject panelEquipo;
 
     private void Start()
     {
@@ -46,4 +51,51 @@ public class UIManage : MonoBehaviour
 
         textoDialogo.text = texto.ToString();
     }
+
+
+    public void SumaCorazones(int indice) {
+        if (indice >= 0 && indice < listaCorazones.Count) {
+            Image imagenCorazon = listaCorazones[indice].GetComponent<Image>();
+            imagenCorazon.sprite = corazonActivado;
+        } 
+    }
+    #region TIENDA
+
+
+    public void PrecioObjeto(string objeto){
+
+        switch(objeto){
+            case"BotonPocionPeque":
+                precioObjeto = 1;
+                break;
+            case"BotonPocionMedi":
+                precioObjeto = 2;
+                break;
+            case"BotonPocionVeloc":
+                precioObjeto = 3;
+                break;
+        }
+
+    }
+
+    public void AdquirirObjeto(string objeto){
+
+        PrecioObjeto(objeto);
+
+        if(precioObjeto <= totalMonedas && totalObjetos <3){
+
+            totalObjetos++;
+            totalMonedas-= precioObjeto;
+            textoMonedas.text = totalMonedas.ToString();
+            GameObject equipo = (GameObject)Resources.Load (objeto);
+            Instantiate(equipo, Vector3.zero, Quaternion.identity, panelEquipo.transform);
+        }
+
+        
+
+    }
+
+    #endregion
+
+
 }
