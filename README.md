@@ -1,8 +1,8 @@
 # ProyectGame
-Este proyecto consiste en un juego inspirado en half-hero-minutes. Es un proyecto hecho para el módulo de Programación multimedia y dispositivos moviles
+Este proyecto consiste en un juego inspirado en half-minute-hero. Es un proyecto hecho para el módulo de Programación multimedia y dispositivos moviles
 en el IES Francisco de los ríos. 
 
-Consiste en una aventura corta con mecanicas sencillas de matar orcos, recoger monedas y con la posibilidad de hablar con NPCs.
+Es  una aventura corta con mecanicas sencillas de matar orcos, recoger monedas y con la posibilidad de hablar con NPCs.
 
 Puedes tener un inventario de hasta 3 objetos, entre ellas pociones de salud pequeña, mediana y de velocidad. Se pueden comprar en el tendero por 1, 2 y 3 monedas respectivamente.
 
