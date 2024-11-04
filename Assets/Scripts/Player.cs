@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour{
 
@@ -113,10 +114,13 @@ public class Player : MonoBehaviour{
             uIManage.RestaCorazones(vidaPersonaje);
             if(vidaPersonaje == 0){
                 animator.SetTrigger("Die");
-                Invoke(nameof(Morir), 1f);
+                Invoke(nameof(Morir), 5f);
+                SceneManager.LoadScene("Scenes/GameOver");
             }
         }
     }
+
+    
 
     private void Morir(){
         Destroy(this.gameObject);

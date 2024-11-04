@@ -45294,6 +45294,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1580736657}
     - target: {fileID: 5549973583345126848, guid: 8d5a969baa231df40b91aa368969b2de, type: 3}
+      propertyPath: cambiarEscena
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549973583345126848, guid: 8d5a969baa231df40b91aa368969b2de, type: 3}
       propertyPath: arrayTextos.Array.size
       value: 2
       objectReference: {fileID: 0}
